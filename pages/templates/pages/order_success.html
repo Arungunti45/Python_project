@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Order Successful 🎉</h2>
+<p>Thank you for ordering <b>{{ order.product.name }}</b></p>
+<p>Payment Method: {{ order.payment_method }}</p>
+<p>It will be delivered to: {{ order.address }}, {{ order.city }} - {{ order.pincode }}</p>
+{% endblock %}

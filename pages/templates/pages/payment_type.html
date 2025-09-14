@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Select Payment Method for {{ order.product.name }}</h2>
+<p>Amount: ₹{{ order.product.price }}</p>
+<form method="POST">
+    {% csrf_token %}
+    <label><input type="radio" name="payment_method" value="UPI" required> UPI</label><br>
+    <label><input type="radio" name="payment_method" value="Card"> Card</label><br>
+    <label><input type="radio" name="payment_method" value="COD"> Cash on Delivery</label><br><br>
+    <button type="submit" class="btn btn-success">Proceed to Payment</button>
+</form>
+{% endblock %}

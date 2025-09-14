@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mx-auto px-6 py-12">
+    <div class="grid md:grid-cols-2 gap-8 items-center mb-16">
+        <div>
+            <h1 class="text-5xl font-bold text-gray-800 mb-6">About Flipkart Clone</h1>
+            <p class="text-lg text-gray-600 mb-6">
+                We built Flipkart Clone to bring the best online shopping experience to everyone. 
+                With a customer-first approach, we aim to make shopping simple, fast, and enjoyable.
+            </p>
+            <a href="{% url 'product_list' %}" class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition">
+                Explore Products
+            </a>
+        </div>
+        <div>
+            <img src="{% static 'images/team.jpg' %}" alt="Our Team" class="rounded-lg shadow-lg">
+        </div>
+    </div>
+
+   
+    <div class="mb-16 text-center">
+        <h2 class="text-3xl font-semibold text-gray-800 mb-8">Our Mission & Vision</h2>
+        <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold text-blue-600 mb-3">Our Mission</h3>
+                <p class="text-gray-600">
+                    To provide quality products at the best prices, with fast delivery and excellent customer service.
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold text-blue-600 mb-3">Our Vision</h3>
+                <p class="text-gray-600">
+                    To be the most trusted and customer-friendly online marketplace that brings everything under one roof.
+                </p>
+            </div>
+        </div>
+    </div>
+
+  
+    <div class="mb-16">
+        <h2 class="text-3xl font-semibold text-gray-800 text-center mb-8">Our Core Values</h2>
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition">
+                <img src="{% static 'images/trust.jpg' %}" alt="Trust" class="w-16 mx-auto mb-4">
+                <h3 class="text-lg font-semibold">Trust</h3>
+                <p class="text-gray-600">We prioritize honesty and reliability.</p>
+            </div>
+            <div class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition">
+                <img src="{% static 'images/innovation.png' %}" alt="Innovation" class="w-16 mx-auto mb-4">
+                <h3 class="text-lg font-semibold">Innovation</h3>
+                <p class="text-gray-600">Always evolving to serve customers better.</p>
+            </div>
+            <div class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition">
+                <img src="{% static 'images/quality.png' %}" alt="Quality" class="w-16 mx-auto mb-4">
+                <h3 class="text-lg font-semibold">Quality</h3>
+                <p class="text-gray-600">Delivering only the best products.</p>
+            </div>
+            <div class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition">
+                <img src="{% static 'images/support.png' %}" alt="Customer Support" class="w-16 mx-auto mb-4">
+                <h3 class="text-lg font-semibold">Customer First</h3>
+                <p class="text-gray-600">Your satisfaction drives everything we do.</p>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="mb-16 text-center">
+        <h2 class="text-3xl font-semibold text-gray-800 mb-8">Meet Our Team</h2>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <img src="{% static 'images/member1.jpg' %}" alt="Team Member" class="w-32 h-32 mx-auto rounded-full mb-4 object-cover">
+                <h3 class="text-lg font-semibold">Arun Kumar</h3>
+                <p class="text-gray-600">Founder & CEO</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <img src="{% static 'images/member2.jpg' %}" alt="Team Member" class="w-32 h-32 mx-auto rounded-full mb-4 object-cover">
+                <h3 class="text-lg font-semibold">Priya Sharma</h3>
+                <p class="text-gray-600">Head of Operations</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <img src="{% static 'images/member3.jpg' %}" alt="Team Member" class="w-32 h-32 mx-auto rounded-full mb-4 object-cover">
+                <h3 class="text-lg font-semibold">Ravi Verma</h3>
+                <p class="text-gray-600">Lead Developer</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center bg-blue-600 text-white py-12 rounded-lg shadow-lg">
+        <h2 class="text-3xl font-bold mb-4">Join Us On Our Journey</h2>
+        <p class="mb-6">We’re redefining the online shopping experience. Be part of our story!</p>
+    </div>
+
+</div>
+{% endblock %}

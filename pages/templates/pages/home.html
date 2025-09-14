@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home - MySite{% endblock %}
+
+{% block content %}
+<div class="text-center mb-5">
+  <h1>Welcome to MySite</h1>
+  <p class="lead">Browse our wide selection of products across multiple categories.</p>
+</div>
+
+<div class="row text-center">
+
+  <!-- Electronics -->
+  <div class="col-md-3 mb-4">
+    <div class="card h-100 shadow-sm">
+      <img src="{% static 'images/electronics.jpg' %}" alt="Electronics"
+        style="display:block; width:100%; height:200px; object-fit:cover;">
+      <div class="card-body">
+        <h5 class="card-title">Electronics</h5>
+        <a href="{% url 'product_list' %}?category={{ 'Electronics'|urlencode }}" class="btn btn-primary">View</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Clothing -->
+  <div class="col-md-3 mb-4">
+    <div class="card h-100 shadow-sm">
+      <img src="{% static 'images/clothing.jpg' %}" alt="Clothing"
+        style="display:block; width:100%; height:200px; object-fit:cover;">
+      <div class="card-body">
+        <h5 class="card-title">Clothing</h5>
+        <a href="{% url 'product_list' %}?category={{ 'Clothing'|urlencode }}" class="btn btn-primary">View</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Beauty -->
+  <div class="col-md-3 mb-4">
+    <div class="card h-100 shadow-sm">
+      <img src="{% static 'images/beauty.jpg' %}" alt="Beauty"
+        style="display:block; width:100%; height:200px; object-fit:cover;">
+      <div class="card-body">
+        <h5 class="card-title">Beauty</h5>
+        <a href="{% url 'product_list' %}?category={{ 'Beauty'|urlencode }}" class="btn btn-primary">View</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Food -->
+  <div class="col-md-3 mb-4">
+    <div class="card h-100 shadow-sm">
+      <img src="{% static 'images/food.jpg' %}" alt="Food"
+        style="display:block; width:100%; height:200px; object-fit:cover;">
+      <div class="card-body">
+        <h5 class="card-title">Food</h5>
+        <a href="{% url 'product_list' %}?category={{ 'Food'|urlencode }}" class="btn btn-primary">View</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

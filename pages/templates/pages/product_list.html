@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<style>
+  /* Layout */
+  .products-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+  }
+  .container{
+    margin: 2px;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    height: fit-content;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+     position: sticky;
+  top: 80px;  /* adjust if your navbar height is different */
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  }
+
+  .sidebar h4 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .category-list {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+  }
+
+  .category-list li {
+    margin-bottom: 10px;
+  }
+
+  .category-list a {
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+
+  .category-list a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+
+  /* Product Cards */
+  .product-card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+
+  .product-card img {
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .product-card .card-body {
+    text-align: center;
+  }
+
+  .product-card h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .product-card .btn {
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  /* Running Welcome Message */
+.running-msg {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: #fdfeff;
+  color: #007bff;
+  font-weight: bold;
+  padding: 10px 0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+.running-msg p {
+  display: inline-block;
+  animation: scroll-left 10s linear infinite;
+  padding-left: 100%;
+  margin: 0;
+}
+.run{
+  display: flex;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .products-container {
+      grid-template-columns: 1fr;
+    }
+    .sidebar {
+      margin-bottom: 20px;
+    }
+  }
+</style>
+
+<div class="container mt-4">
+<div class="run">
+<h2 class="mb-4">Products</h2>
+    <div class="running-msg">
+  <p>WELCOME TO MYSITE</p>
+</div>
+
+  
+</div>
+  
+  <!-- Search Bar -->
+  
+
+  <div class="products-container">
+
+    <!-- Sidebar (Categories) -->
+    <aside class="sidebar">
+      <h4>Categories</h4>
+      <ul class="category-list">
+        <li><a href="{% url 'product_list' %}">All</a></li>
+        {% for category in categories %}
+          <li><a href="{% url 'product_list' %}?category={{ category.id }}">{{ category.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </aside>
+
+    <!-- Product Grid -->
+    <div class="row">
+      <form method="GET" action="{% url 'product_list' %}" class="mb-4 d-flex">
+    <input type="text" name="q" class="form-control me-2" placeholder="Search products..." value="{{ request.GET.q }}">
+    <button type="submit" class="btn btn-outline-primary">Search</button>
+  </form>
+      {% for product in products %}
+      <div class="col-md-4 col-sm-6 mb-4">
+        <div class="card product-card shadow-sm">
+          {% if product.image %}
+            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text"><strong>₹{{ product.price }}</strong></p>
+            <p class="text-muted small">Updated: {{ product.updated_at|date:"M d, Y" }}</p>
+            <a href="{% url 'checkout' product.id %}" class="btn btn-primary w-100">Buy Now</a>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+        <p>No products available.</p>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+{% endblock %}

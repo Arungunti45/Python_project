@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mx-auto px-6 py-12">
+
+    <!-- Hero Section -->
+    <div class="grid md:grid-cols-2 gap-8 items-center mb-16">
+        <div>
+            <h1 class="text-5xl font-bold text-gray-800 mb-6">Contact Us</h1>
+            <p class="text-lg text-gray-600 mb-6">
+                We’d love to hear from you! Whether you have a question about products, orders, delivery, or anything else, 
+                our team is ready to answer all your questions.
+            </p>
+            <p class="text-gray-600">
+                📞 <strong>Customer Support:</strong> +91 98765 43210 <br>
+                📧 <strong>Email:</strong> support@flipkartclone.com <br>
+                🕒 <strong>Hours:</strong> 24/7 Support
+            </p>
+        </div>
+        <div>
+            <img src="{% static 'images/contact.jpg' %}" alt="Support Team" class="rounded-lg shadow-lg">
+        </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="mb-16">
+        <h2 class="text-3xl font-semibold text-gray-800 text-center mb-8">Send Us a Message</h2>
+        <div class="bg-white shadow-md rounded-lg p-8 max-w-2xl mx-auto">
+            <form method="POST" action="{% url 'contact' %}">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                    <input type="text" id="name" name="name" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 font-medium mb-2">Your Email</label>
+                    <input type="email" id="email" name="email" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
+                    <textarea id="message" name="message" rows="5" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500" required></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="mb-16">
+        <h2 class="text-3xl font-semibold text-gray-800 text-center mb-8">Our Location</h2>
+        <div class="rounded-lg overflow-hidden shadow-lg">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3150!2d77.5946!3d12.9716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae167f!2sBangalore%20India!5e0!3m2!1sen!2sin!4v000000000" 
+                width="100%" 
+                height="400" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="text-center bg-blue-600 text-white py-12 rounded-lg shadow-lg">
+        <h2 class="text-3xl font-bold mb-4">We’re Here to Help!</h2>
+        <p class="mb-6">Reach out anytime and our support team will assist you promptly.</p>
+        <a href="tel:+919876543210" class="bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-200 transition">
+            Call Us Now
+        </a>
+    </div>
+
+</div>
+{% endblock %}

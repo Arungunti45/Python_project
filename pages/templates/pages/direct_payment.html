@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Payment for {{ order.product.name }}</h2>
+<p>Amount:<b> ₹{{ order.product.price }}</b></p>
+<p>Payment Method: <b>{{ order.payment_method }}</b></p>
+
+<form method="POST" action="{% url 'confirm_payment' order.id %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success">Pay Now</button>
+</form>
+{% endblock %}
